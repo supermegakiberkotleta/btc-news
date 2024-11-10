@@ -209,12 +209,31 @@ h1,h2,h3,h4,h5,h6 {
   z-index: 111;
   background: #fff;
 }
+.post-header h3 a{
+  font-size: 18px;
+}
+.post-header p{
+  font-size: 15px;
+}
+.main-title{
+  font-size: 54px;
+  font-weight: 900;
+
+}
+.main-subtitle{
+  font-size: 32px;
+  font-weight: 500;
+}
 .social-links ul{
   margin-bottom: 0;
 }
 .social-links svg{
   width: 20px;
   height: 20px;
+}
+.social-links img{
+  width: 30px;
+
 }
 .main-logo a{
   display: flex;
@@ -223,7 +242,7 @@ h1,h2,h3,h4,h5,h6 {
   column-gap: 15px;
 }
 .main-logo img{
-  max-width: 50px;
+  max-width: 250px;
 }
 .main-logo a{
   text-decoration: none;

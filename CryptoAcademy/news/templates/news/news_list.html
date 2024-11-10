@@ -1,26 +1,29 @@
 {% extends 'main/layout.html' %}
 {% load static %}
-{% block title %}Главная страница{% endblock %}
-
+{% block title %}Новости{% endblock %}
 {% block content %}
 
-    <section class="py-3">
-      <div class="container-fluid">
-
-
-      </div>
-    </section>
-  <section id="latest-blog" class="py-3">
+    <section class="py-3 my-5">
       <div class="container-fluid">
         <div class="row">
-          <div class="section-header d-flex align-items-center justify-content-between my-5">
-            <h2 class="section-title">Новости</h2>
-
+          <div class="section-header d-flex align-items-center justify-content-center">
+            <h1 class="main-title">Новости криптовалюты</h1>
           </div>
         </div>
+         <div class="row my-2">
+          <div class="section-header d-flex align-items-center justify-content-center">
+            <h2 class="main-subtitle">Посление новости криптовалюты со всего мира.</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="latest-blog" class="py-3">
+      <div class="container-fluid">
+
         <div class="row">
           {% for news in news %}
-          <div class="col-md-4">
+          <div class="col-md-3">
             <article class="post-item card border-0 shadow-sm p-3">
               <div class="image-holder zoom-effect">
                 <a href="#">
@@ -38,7 +41,7 @@
                   <h3 class="post-title">
                     <a href="{% url 'news_detail' slug=news.slug %}" class="text-decoration-none">{{ news.title }}</a>
                   </h3>
-                    <p>{{ news.content|truncatewords:30 }}</p>
+                    <p>{{ news.content|truncatewords:30|safe }}</p>
                 </div>
               </div>
             </article>
@@ -48,4 +51,7 @@
         </div>
       </div>
     </section>
+
+
+
 {% endblock %}

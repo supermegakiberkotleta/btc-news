@@ -1,0 +1,15 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block title %}{{ news.title }}{% endblock %}
+{% block description %}{{ news.seo_description }}{% endblock %}
+{% block keywords %}{{ news.seo_keywords }}{% endblock %}
+{% block content %}
+
+    <h1>{{ news.title }}</h1>
+    <p>{{ news.content|safe }}</p>
+    <small>{{ news.pub_date }}</small>
+    <br>
+    <a href="{% url 'news_list' %}">Back to News List</a>
+
+
+{% endblock %}
