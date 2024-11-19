@@ -1,57 +1,57 @@
 {% extends 'main/layout.html' %}
 {% load static %}
+{% load custom_filters %}
 {% block title %}Новости{% endblock %}
 {% block content %}
 
-    <section class="py-3 my-5">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="section-header d-flex align-items-center justify-content-center">
-            <h1 class="main-title">Новости криптовалюты</h1>
-          </div>
-        </div>
-         <div class="row my-2">
-          <div class="section-header d-flex align-items-center justify-content-center">
-            <h2 class="main-subtitle">Посление новости криптовалюты со всего мира.</h2>
-          </div>
-        </div>
+<section class="py-5 my-5">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="section-header d-flex align-items-center justify-content-center">
+        <h1 class="main-title">Новости криптовалюты</h1>
       </div>
-    </section>
-
-    <section id="latest-blog" class="py-3">
-      <div class="container-fluid">
-
-        <div class="row">
-          {% for news in news %}
-          <div class="col-md-3">
-            <article class="post-item card border-0 shadow-sm p-3">
-              <div class="image-holder zoom-effect">
-                <a href="#">
-                  {% if news.image %}
-                  <img src="{{ news.image.url }}" alt="{{ news.title }}" class="card-img-top">
-                  {% endif %}
-                </a>
-              </div>
-              <div class="card-body">
-                <div class="post-meta d-flex text-uppercase gap-3 my-2 align-items-center">
-                  <div class="meta-date"><svg width="16" height="16"><use xlink:href="#calendar"></use></svg>{{ news.pub_date }}</div>
-                  <div class="meta-categories"><svg width="16" height="16"><use xlink:href="#category"></use></svg>tips & tricks</div>
-                </div>
-                <div class="post-header">
-                  <h3 class="post-title">
-                    <a href="{% url 'news_detail' slug=news.slug %}" class="text-decoration-none">{{ news.title }}</a>
-                  </h3>
-                    <p>{{ news.content|truncatewords:30|safe }}</p>
-                </div>
-              </div>
-            </article>
-          </div>
-          {% endfor %}
-
-        </div>
+    </div>
+    <div class="row my-2">
+      <div class="section-header d-flex align-items-center justify-content-center">
+        <h2 class="main-subtitle">Последние новости криптовалюты со всего мира.</h2>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
+<section id="latest-blog" class="py-3">
+  <div class="container-fluid">
+    <div class="row">
+      {% for news in news %}
+      <div class="col-md-4 news-item">
+        <article class="post-item card border-0 shadow-sm p-3">
+          <div class="image-holder zoom-effect">
+            <a href="#">
+              {% if news.image %}
+              <img src="{{ news.image.url }}" alt="{{ news.title }}" class="card-img-top">
+              {% endif %}
+            </a>
+          </div>
+          <div class="card-body">
+            <div class="post-meta d-flex text-uppercase gap-3 my-2 align-items-center">
+              <div class="meta-categories"><svg width="16" height="16"><use xlink:href="#category"></use></svg>{{ news.pub_date|time_ago }}</div>
+              <div class="meta-date"><svg width="16" height="16"><use xlink:href="#calendar"></use></svg>{{ news.pub_date|format_date }}</div>
+            </div>
+            <div class="post-header">
+              <h3 class="post-title">
+                <a href="{% url 'news_detail' slug=news.slug %}" class="text-decoration-none">{{ news.title }}</a>
+              </h3>
+            </div>
+          </div>
+        </article>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col-md-12 text-center my-3">
+      <button id="load-more-btn" class="btn btn-primary">Показать еще</button>
+    </div>
+  </div>
+</section>
 
 
 {% endblock %}

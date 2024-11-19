@@ -1,12 +1,11 @@
 from django.shortcuts import render
-
-# Create your views here.
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import News
 from .forms import NewsForm
+from django.views.generic import ListView
 
 def news_list(request):
-    news = News.objects.all()
+    news = News.objects.all().order_by('-pub_date')
     return render(request, 'news/news_list.html', {'news': news})
 
 def news_detail(request, slug):
@@ -23,3 +22,11 @@ def news_create(request):
     else:
         form = NewsForm()
     return render(request, 'news/news_edit.html', {'form': form})
+
+
+class NewsListView(ListView):
+    model = News
+    template_name = 'news_list.html'  # замените на имя вашего шаблона
+    context_object_name = 'news'
+    ordering = ['-pub_date']  # сортировка по дате публикации в убывающем порядке
+
