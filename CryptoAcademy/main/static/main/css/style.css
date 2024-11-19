@@ -185,6 +185,15 @@ h1,h2,h3,h4,h5,h6 {
 .dropdown-menu {
   --bs-dropdown-link-active-bg: var(--bs-primary);
 }
+#load-more-btn{
+  width: 100%;
+  padding: 20px 20px;
+  color: var(--dark-color);
+  font-size: 20px;
+  background-color: rgba(0,0,0,0);
+  font-weight: 700;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
 .nav-pills .nav-link {
   --bs-nav-pills-link-active-color: #111;
   --bs-nav-pills-link-active-bg: #f1f1f1;
