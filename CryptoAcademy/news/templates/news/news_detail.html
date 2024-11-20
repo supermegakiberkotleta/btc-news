@@ -1,15 +1,50 @@
 {% extends 'main/layout.html' %}
 {% load static %}
-{% block title %}{{ news.title }}{% endblock %}
+{% block title %}BTC NEWS - {{ news.title }}{% endblock %}
 {% block description %}{{ news.seo_description }}{% endblock %}
 {% block keywords %}{{ news.seo_keywords }}{% endblock %}
+{% load custom_filters %}
 {% block content %}
 
-    <h1>{{ news.title }}</h1>
-    <p>{{ news.content|safe }}</p>
-    <small>{{ news.pub_date }}</small>
-    <br>
-    <a href="{% url 'news_list' %}">Back to News List</a>
+<section class="my-5">
+  <div class="container-fluid">
+      <div class="section-header d-flex align-items-center justify-content-between">
+            <h1 class="news-title" >{{ news.title }}</h1>
+            <div class="btn-wrap align-right">
+              <a href="#" style="font-size: 20px;margin-left: 30px" class="d-flex align-items-center nav-link">Далее <svg width="24" height="24"><use xlink:href="#arrow-right"></use></svg></a>
+            </div>
+          </div>
 
+      <div class="post-meta d-flex text-uppercase gap-3 my-2 align-items-center">
+                <div class="meta-categories d-flex gap-1 align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                        <g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#9a9a9a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                    </svg>{{ news.pub_date|time_ago }}
+                </div>
+                <div class="meta-date d-flex gap-1 align-items-center">
+                    <svg width="16" height="16"><use xlink:href="#calendar"></use></svg>{{ news.pub_date|format_date }}
+                </div>
+            </div>
+    <div class="row my-3">
+      <div class="col-lg-7">
+
+          <div class="news-img">
+              {% if news.image %}
+                <img src="{{ news.image.url }}" alt="{{ news.title }}" class="card-img-top">
+              {% endif %}
+              <img src="" alt="">
+          </div>
+          <div class="news-content">
+              {{ news.content|safe }}
+          </div>
+      </div>
+      <div class="col-lg-5">
+
+      </div>
+    </div>
+  </div>
+</section>
 
 {% endblock %}

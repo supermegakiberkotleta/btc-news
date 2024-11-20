@@ -722,3 +722,11 @@ background: linear-gradient(90deg, rgba(255,183,38,1) 0%, rgba(255,84,22,1) 40%,
     transform: translateY(-120vh); /* Заканчиваем за пределами экрана сверху */
   }
 }
+.news-img{
+  margin-bottom: 24px;
+  position: relative;
+}
+.news-img img{
+  border-top-left-radius: var(--bs-card-inner-border-radius);
+  border-top-right-radius: var(--bs-card-inner-border-radius);
+}

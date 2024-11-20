@@ -21,6 +21,7 @@
 
 <section id="latest-blog" class="py-3">
   <div class="container-fluid">
+
     <div class="row">
      {% for news in news %}
 <div class="col-md-4 news-item">
@@ -35,7 +36,15 @@
         <div class="card-body">
             <div class="post-meta d-flex text-uppercase gap-3 my-2 align-items-center">
                 <div class="meta-categories">
-                    <svg width="16" height="16"><use xlink:href="#category"></use></svg>{{ news.pub_date|time_ago }}
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none">
+
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+
+<g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#9a9a9a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+
+</svg>{{ news.pub_date|time_ago }}
                 </div>
                 <div class="meta-date">
                     <svg width="16" height="16"><use xlink:href="#calendar"></use></svg>{{ news.pub_date|format_date }}
